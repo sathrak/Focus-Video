@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>meet app</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+        
+            <div class="d-flex" id="wrapper">
+
+                
+            
+                <!-- Page Content -->
+                <div id="page-content-wrapper">
+                    
+            
+                  <div class="container-fluid px-0">
+                    <div class="video-show" >
+                      <ul id="menu-toggle">
+                        <li><i class="fas fa-users"></i> </li>
+                        <li><i class="fas fa-comment-alt"></i> </li>
+                        <li>05:14</li>
+                        <li>
+                          <img src="images/video-thumnail.jpg" class="img-fluid" alt="image" />
+                        </li>
+                        <li>
+                            <i class="fas fa-ellipsis-h"></i>
+                            <div class="main_prof"></div>
+                            <span>you</span>
+                        </li>
+                    </ul>
+                        <div class="row double-screen">
+                            <div class="w-50">
+                                <img src="images/refer.jpg" class="img-fluid" alt="images" />
+                            </div>
+                            <div class="w-50">
+                                <img src="images/refer1.png" class="img-fluid" alt="images" />
+                            </div>
+                        </div>
+                        <!-- <div>
+                          <input type="button" id="btn" class="btn btn-default" value="click me">
+                          </div>
+                          
+                          <div  class="showup" style="display:none; ">
+                          Hello
+                          </div> -->  
+                    </div>
+                    <!-- bottom content -->
+                    <div class="video-bar">
+                      <div class="row">
+                        <div class="col-md-4 b_meet_dts my-auto">
+                          <div class="panel">
+                            <h4 id="btn">Meeting details <i class="fas fa-chevron-circle-down"></i></h4>
+                          </div>
+                           <!-- popup attachement -->
+                           <div id="attachments" class="showup"> 
+                                <nav>
+                                  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" 
+                                    aria-controls="nav-home" aria-selected="true"><i class="fas fa-info"></i> Details</a>
+                                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" 
+                                    aria-controls="nav-profile" aria-selected="false"><i class="fas fa-paperclip"></i> Attachement</a>
+                                  </div>
+                                </nav>
+                                <div class="tab-content test" id="nav-tabContent">
+                                  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                    <h4>Joining Info</h4>
+                                    <span>https://meet.google.com/awa-typa-yak</span>
+                                    <h6><i class="far fa-copy"></i> Copy Joining Info</h6>
+                                  </div>
+                                  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                    <span>Google calendar attachement showup here</span>
+                                  </div>
+                                </div>
+                            </div>
+                            <!-- @end -->
+                        </div>
+                        <div class="col-md-4 b_actions text-center my-auto">
+                          <ul class="mb-0">
+                            <li data-toggle="modal" data-target="#camera"><i class="fas fa-microphone"></i></li>
+                            <li data-toggle="modal" data-target="#call-actions"><i class="fas fa-phone-alt"></i></li>
+                            <li id="v-icons"><i class="fas fa-video"></i></li>
+                        </ul>
+                        <!-- popup for camera -->
+                    
+                    <div class="modal fade" id="camera" tabindex="-1" role="dialog" aria-labelledby="camera_main" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                          <div class="modal-header text-center border-0">
+                          <h5 class="modal-title" id="camera_main">Your mic is muted by your system settings</h5>
+                          
+                          </div>
+                          <div class="modal-body">
+                              <p>Go to your computer's settings to unmute your mic and adjusts its level</p>
+                          </div>
+                          <div class="modal-footer border-0">
+                          <button type="button" class="btn" data-dismiss="modal">Dissmiss</button>
+                          <button type="button" class="btn">Learn More</button>
+                          </div>
+                      </div>
+                      </div>
+                  </div>
+          <!-- @end -->
+                        </div>
+                        <div class="col-md-4 b_captions">
+                          <ul class="mb-0">
+                            <li><i class="far fa-closed-captioning"></i> Turn on captions</li>
+                            <li id='present-btn'><i class="far fa-caret-square-up"></i> Present Now</li>
+                            <li id='b_pop-btn'><i class="fas fa-ellipsis-v"></i></li>
+                          </ul>
+                          <!-- popup presents -->
+                          <div id="present" > 
+                            <h5>Present</h5>
+                            <ul>
+                                <li><i class="far fa-window-restore"></i> Your entire screen</li>
+                                <li><i class="fas fa-desktop"></i> A window</li>
+                                <li><i class="fab fa-chromecast"></i> A Chrome tab</li>
+                            </ul>
+                        </div>
+                        <!-- @end -->
+                          <!-- popup dots -->
+                          <div id="b_pop" > 
+                            <ul>
+                                <li><i class="far fa-window-restore"></i> Change Layout</li>
+                                <li><i class="fal fa-expand"></i> Full Screen</li>
+                                <li><i class="far fa-closed-captioning"></i> Turn on caption</li>
+                                <li class="border-bottom"><i class="fas fa-cog"></i> Settings</li>
+                                <li><i class="fas fa-exclamation-circle"></i> Report a problem</li>
+                                <li><i class="fas fa-exclamation-triangle"></i> Report abuse</li>
+                                <li><i class="far fa-question-circle"></i> Help</li>
+                            </ul>
+                        </div>
+                        <!-- @end -->
+                        </div>
+                      </div>
+                    </div>
+                    
+                  </div>
+                </div>
+                <!-- /#page-content-wrapper -->
+                <!-- Sidebar -->
+                    <div class="bg-light border-right" id="sidebar-wrapper">
+                        <div class="sidebar-heading">Meeting details <span id="close">X</span></div>
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                              <a class="nav-link active" id="people-tab" data-toggle="tab" href="#people" role="tab" 
+                              aria-controls="people" aria-selected="true"><i class="fas fa-user-friends"></i> People</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" id="chat-tab" data-toggle="tab" href="#chat" role="tab" 
+                              aria-controls="chat" aria-selected="false"><i class="fas fa-comments"></i> Chat</a>
+                            </li>
+                          </ul>
+                          <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="people" role="tabpanel" aria-labelledby="people-tab">
+                              <h4 data-toggle="modal" data-target="#add-people"><i class="fas fa-user-plus"></i> Add People</h4>
+                              <ul>
+                                <li><img src="images/user.png" class="img-fluid" alt="img" /> <span> Mariappan mari (you)</span> </li>
+                                <li><img src="images/user.png" class="img-fluid" alt="img" /> <span> Mariappan mari (you)</span> </li>
+                                <li><img src="images/user.png" class="img-fluid" alt="img" /> <span> Mariappan mari (you)</span> </li>
+                                <li><img src="images/user.png" class="img-fluid" alt="img" /> <span> Mariappan mari (you)</span> </li>
+                              </ul>
+                            </div>
+                            <div class="tab-pane fade" id="chat" role="tabpanel" aria-labelledby="chat-tab">
+                              <div class="card bg-transparent border-0 p-2">
+                                <div>hello</div>
+                              </div>
+                              <div class="input-group mb-3">
+                                <input type="text" class="form-control" placeholder="Send message to everyone" 
+                                aria-label="Recipient's username" aria-describedby="button-addon2">
+                                <div class="input-group-append">
+                                  <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="fas fa-paper-plane"></i></button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                    </div>
+                    <!-- /#sidebar-wrapper -->
+
+
+
+                   
+
+                    <!-- Add people -->
+                    <div class="modal fade" id="add-people" tabindex="-1" role="dialog" 
+                    aria-labelledby="add-peopleLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="add-people">Add people</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <nav>
+                              <div class="nav nav-tabs text-center" id="nav-tab1" role="tablist">
+                                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home"
+                                 role="tab" aria-controls="nav-home" aria-selected="true"><i class="fas fa-user-plus"></i> Invite</a>                              </div>
+                            </nav>
+                            <div class="tab-content text-center" id="nav-tabContent1">
+                              <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                <input type="text" placeholder="Enter name or Email" />
+                                <ul>
+                                  <li><img src="images/user.png" class="img-fluid" alt="img"> <span> Mariappan mari (you)</span> </li>
+                                  <li><img src="images/user.png" class="img-fluid" alt="img"> <span> Mariappan mari (you)</span> </li>
+                                  <li><img src="images/user.png" class="img-fluid" alt="img"> <span> Mariappan mari (you)</span> </li>
+                                  <li><img src="images/user.png" class="img-fluid" alt="img"> <span> Mariappan mari (you)</span> </li>
+                                  <li><img src="images/user.png" class="img-fluid" alt="img"> <span> Mariappan mari (you)</span> </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- @end -->
+                
+                    <!-- call action popup -->
+                      <div class="modal fade" id="call-actions" tabindex="-1" role="dialog" aria-labelledby="call-actionslLabel" 
+                      aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-body">
+                              <h3>You left the meeting</h3>
+                              <ul>
+                                <li><button>Rejoin</button></li>
+                                <li><button>Return to home screen</button></li>
+                              </ul>
+                              <h5>Submit feedback</h5>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    <!-- @end -->
+            
+              </div>
+              <!-- /#wrapper -->
+
+    <script src="js/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/custom.js"></script>
+    
+
+</body>
+
+</html>

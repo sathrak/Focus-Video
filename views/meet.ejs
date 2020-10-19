@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>meet app</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
+</head>
+<body onload="myFunction()">
+    <div class="d-flex" id="wrapper">
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid px-0">               
+                <div id="video-play-page" style="display: none;">
+                    <div class="video-show" >
+                        <ul id="menu-toggle">
+                            <li><i class="fas fa-users"></i> </li>
+                            <li><i class="fas fa-comment-alt"></i> </li>
+                            <li style="width:68px;" id="Call_Duration">00:00</li>
+                            <li>
+                                <img src="images/video-thumnail.jpg" class="img-fluid" alt="image" />
+                            </li>
+                            <li>
+                                <!--<i class="fas fa-ellipsis-h"></i>-->
+                                <div class="main_prof"><img src="images/man-profile.jpg" class="img-fluid" alt="image" /></div>
+                                <span>you</span>
+                            </li>
+                        </ul>
+                        <div class="row double-screen">
+                            <div class="w-100">
+                                <div id="videos-container" style="margin: 20px 0;"></div>
+                                <!--<div id="room-urls" style="text-align: center;display: none;background: #F1EDED;margin: 15px -10px;border: 1px solid rgb(189, 189, 189);border-left: 0;border-right: 0;"></div>  -->          
+                                <!--<img src="images/refer.jpg" class="img-fluid" alt="images" />-->
+                            </div>                   
+                        </div>
+                        <button id="show" class="btn">Show</button>
+                    </div>
+
+                    <!-- bottom content Start-->
+                    <div class="video-bar" >
+                        <div class="row">
+                            <div class="col-md-4 b_meet_dts my-auto">
+                                <div class="panel">
+                                <h4 id="btn">Meeting details <i class="fas fa-chevron-circle-down"></i></h4>
+                                </div>
+                                <!-- popup attachement -->
+                                <div id="attachments" class="showup"> 
+                                    <nav>
+                                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" 
+                                        aria-controls="nav-home" aria-selected="true"><i class="fas fa-info"></i> Details</a>
+                                        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" 
+                                        aria-controls="nav-profile" aria-selected="false"><i class="fas fa-paperclip"></i> Attachement</a>
+                                        </div>
+                                    </nav>
+                                    <div class="tab-content" id="nav-tabContent">
+                                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                        	<h4>Joining Info</h4>
+                                        	<span id="room-urls"></span>
+                                        	<h6><i class="far fa-copy"></i> Copy Joining Info</h6>
+                                        </div>
+                                        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+											<span>Google calendar attachement showup here</span>
+											<button id="share-file" >Share File</button>
+											<!--disabled<form id="uploadbanner" enctype="multipart/form-data" method="post" action="https://focus.ind.in:8080/upload">
+												<input id="fileupload" name="myfile" type="file" />
+												<input type="submit" value="submit" id="submit" />
+											</form>-->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- @end -->
+                            </div>
+                            <div class="col-md-4 b_actions text-center my-auto">
+								<div id="main-media"></div>
+                                <!--<ul class="mb-0">
+									<li data-toggle="modal" data-target="#camera"><i class="fas fa-microphone"></i></li>
+									<li data-toggle="modal" data-target="#call-actions"><i class="fas fa-phone-alt"></i></li>
+									<li id="v-icons"><i class="fas fa-video"></i></li>
+								</ul>-->
+                            </div>
+                            <div class="col-md-4 b_captions">
+                                <ul class="mb-0">
+									<li><i class="far fa-closed-captioning"></i> Turn on captions</li>
+									<li id='present-btn'><i class="far fa-caret-square-up"></i> Present Now</li>
+									<li id='b_pop-btn'><i class="fas fa-ellipsis-v"></i></li>
+                                </ul>
+                                <!-- popup presents -->
+                                <div id="present" > 
+									<h5>Present</h5>
+									<ul>
+										<li><i class="far fa-window-restore"></i> Your entire screen</li>
+										<li><i class="fas fa-desktop"></i> A window</li>
+										<li><i class="fab fa-chromecast"></i> A Chrome tab</li>
+									</ul>
+                                </div>
+                            <!-- @end -->
+                                <!-- popup dots -->
+                                <div id="b_pop" > 
+									<ul>
+										<li><i class="far fa-window-restore"></i> Change Layout</li>
+										<li><i class="fal fa-expand"></i> Full Screen</li>
+										<li><i class="far fa-closed-captioning"></i> Turn on caption</li>
+										<li class="border-bottom" data-toggle="modal" data-target="#setting_popup">
+											<i class="fas fa-cog"></i> Settings</li>
+										<li><i class="fas fa-exclamation-circle"></i> Report a problem</li>
+										<li><i class="fas fa-exclamation-triangle"></i> Report abuse</li>
+										<li><i class="far fa-question-circle"></i> Help</li>
+									</ul>
+                                </div>
+                            <!-- @end -->
+                            </div>
+                        </div>
+                    </div>   
+                    <!-- bottom content End-->
+                </div>
+
+                <!--Create Room Page Start-->
+                <div id="create-room-page">
+                    <div class="row py-3">
+                        <div class="col-2">
+                            <h3><image src="images/logo.png" class="img-fluid"></h3>
+                        </div>
+                        <div class="col-10 r_side_pr text-right">
+                            <ul class="mb-0">
+                                <li><%= EmailId %> <br/>
+                                    <a href="https://focus.ind.in:8080/logout">Switch account</a>
+                                </li>
+                                <li><img src="images/man-profile.jpg" class="img-fluid" alt="image" /></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row m_chat">            
+                        <div class="col-md-9 col-lg-9">
+                            <img id="video-img" src="images/refer.jpg" class="img-fluid m_chat_img" alt="image" />
+                            <div id="meet-videos-container" ></div>
+                             <div class="card">
+                                <div class="l-s-list">
+                                    <i class="fas fa-ellipsis-h"></i>
+                                </div>
+                                <ul>
+                                    <li data-toggle="modal" data-target="#camera"><i class="fas fa-microphone"></i></li>
+                                    <li><i class="fas fa-video"></i></li>
+                                </ul>
+                                <div class="r-s-list" onClick="document.getElementById('pol').style.display='block'">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </div>
+                                <div id="pol" title="Dialog Title" > 
+                                    <ul>
+                                        <li><i class="far fa-closed-captioning"></i> Turn on caption</li>
+                                        <li><i class="fas fa-cog"></i> Settings</li>
+                                        <li><i class="fas fa-exclamation-circle"></i> Report a problem</li>
+                                        <li><i class="fas fa-exclamation-triangle"></i> Report abuse</li>
+                                        <li><i class="far fa-question-circle"></i> Help</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                   
+                        <div class="col-md-3 col-lg-3 m_chat_rgt text-center my-auto">
+                            <h1>Meeting Ready</h1>
+							<!--<p>No one else is here</p>-->
+							<p id="r-id"></p>
+							<input type="hidden" id="room-id" autocorrect=off autocapitalize=off size=18>
+                            <ul>
+								<li id="jo_rm"><button style="display: none;" id="join-room"> Join now</button></li>
+							
+								<li id="op_rm"><button style="display: none;" id="open-room">Join now</button></li>								
+								
+                                <li><button id="open-or-join-room"> Present</button></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- popup for camera -->                
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="bg-light border-right" id="sidebar-wrapper">
+            <div class="sidebar-heading">Meeting details <span id="close">X</span></div>
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                <a class="nav-link active" id="people-tab" data-toggle="tab" href="#people" role="tab" 
+                aria-controls="people" aria-selected="true"><i class="fas fa-user-friends"></i> People</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" id="chat-tab" data-toggle="tab" href="#chat" role="tab" 
+                aria-controls="chat" aria-selected="false"><i class="fas fa-comments"></i> Chat</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="people" role="tabpanel" aria-labelledby="people-tab">
+					<div id="show-all-people">
+						<h4 data-toggle="modal" data-target="#add-people"><i class="fas fa-user-plus"></i> Add People</h4>
+					</div>
+					<div id="add_people"></div>
+					<!--<ul>
+						<li><div class="profile_m_img"></div> <span> user name 1 (you)</span> </li>
+						<li><div class="profile_m_img"></div> <span> user name 2 </span> </li>
+						<li><div class="profile_m_img"></div> <span> user name 3 (you)</span> </li>
+						<li><div class="profile_m_img"></div> <span> user name 4 (you)</span> </li>
+					</ul>-->
+					<ul class="add_peo_li">
+						<li><i class="fas fa-thumbtack"></i></li>
+						<li><i class="fas fa-microphone"></i></li>
+						<li><i class="fas fa-window-minimize"></i></li>
+					</ul>
+                </div>
+                <div class="tab-pane fade" id="chat" role="tabpanel" aria-labelledby="chat-tab">
+					<div class="card bg-transparent border-0 p-2">
+						<ul class="chat-history" id="myList">
+							<!--<li class="you">you 9.25 pm
+								<p>Hello</p>
+							</li>
+							<li class="opont">test 9.25 pm
+								<p>Hey Hi how r u</p>
+							</li>
+							<li class="chat-output opont"></li>-->
+						</ul>
+					</div>
+					<div class="input-group mb-3">
+						<input type="text" id="input-text-chat" class="form-control" placeholder="Send message to everyone" 
+						aria-label="Recipient's username" aria-describedby="button-addon2">
+						<div class="input-group-append">
+						<button class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="fas fa-paper-plane"></i></button>
+						</div>
+					</div>
+                </div>
+            </div>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Show All people -->
+        <div class="modal fade" id="add-people" tabindex="-1" role="dialog" 
+            aria-labelledby="add-peopleLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="add-people">Add people</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<nav>
+							<div class="nav nav-tabs text-center" id="nav-tab1" role="tablist">
+							<a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home"
+							role="tab" aria-controls="nav-home" aria-selected="true"><i class="fas fa-user-plus"></i> Invite</a></div>
+						</nav>
+						<div class="tab-content text-center" id="nav-tabContent1">
+							<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+								<input type="text" placeholder="Enter name or Email" />
+								<div id="show-all"></div>
+								<!--<ul>
+									<li><img src="images/user.png" class="img-fluid" alt="img"> <span> user name details (you)</span> </li>
+									<li><img src="images/user.png" class="img-fluid" alt="img"> <span> user name details 1</span> </li>
+									<li><img src="images/user.png" class="img-fluid" alt="img"> <span> user name details 2</span> </li>
+									<li><img src="images/user.png" class="img-fluid" alt="img"> <span> user name details 3</span> </li>
+									<li><img src="images/user.png" class="img-fluid" alt="img"> <span> user name details 4</span> </li>
+								</ul>-->
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn cus_btn" >Send Mail</button>
+					</div>
+                </div>
+            </div>
+        </div>
+        <!-- @end -->
+
+        <!-- Modal -->
+        <div class="modal fade" id="camera" tabindex="-1" role="dialog" aria-labelledby="camera_main" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center border-0">
+                        <h5 class="modal-title" id="camera_main">Your mic is muted by your system settings</h5>                        
+                    </div>
+                    <div class="modal-body">
+                        <p>Go to your computer's settings to unmute your mic and adjusts its level</p>
+                    </div>
+                    <div class="modal-footer border-0">
+                        <button type="button" class="btn" data-dismiss="modal">Dissmiss</button>
+                        <button type="button" class="btn">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- @end --> 
+    </div>   
+    <script src="js/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    
+    <script src="/dist/RTCMultiConnection.js"></script>
+    <script src="/node_modules/webrtc-adapter/out/adapter.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+
+    <!-- custom layout for HTML5 audio/video elements -->
+    <link rel="stylesheet" href="/dev/getHTMLMediaElement.css">
+    <script src="/dev/getHTMLMediaElement.js"></script>
+	<script src="/node_modules/fbr/FileBufferReader.js"></script>
+    <!--<script src="/node_modules/recordrtc/RecordRTC.js"></script>-->
+	<script> 
+		window.enableAdapter = true; // enable adapter.js	
+		// ......................................................
+		// .......................UI Code........................
+		// ......................................................
+		var roomId = '<%=MId%>';
+		var userId = '<%=Id%>';
+		if(roomId){
+			document.getElementById('join-room').style.display = "block";
+			document.getElementById('op_rm').style.display = "none";
+		} else {
+			document.getElementById('open-room').style.display = "block";
+			document.getElementById('jo_rm').style.display = "none";
+		}
+
+		document.getElementById("open-room").onclick = function() {
+			removedVideoPlay();
+			disableInputButtons();
+			connection.open(document.getElementById('room-id').value, function(isRoomOpened, roomid, error) {
+				if(isRoomOpened === true) {
+					stFunc();
+					showRoomURL(connection.sessionid);
+				}else {
+					disableInputButtons(true);
+					if(error === 'Room not available') {
+						alert('Someone already created this room. Please either join or create a separate room.');
+						return;
+					}
+					alert(error);
+				}
+			});
+		};
+
+		function stFunc() {	
+			var showTime = 0; var hour = 0; var mint = 0; var sec = 0;
+			startInterval = setInterval(function () {
+				sec = (sec + 1) % 361;
+				if(sec > 59){ 
+					sec = 0;
+					mint = (mint + 1);
+				}	
+				if(mint > 59){
+					hour = (hour + 1);
+				}			
+				var bmsec = sec;
+				if (sec < 10) {bmsec = '0' + sec};
+				var bmmint = mint;
+				if (mint < 10) {bmmint = '0' + mint};
+				var bmhour = hour
+				if (hour < 10) {bmhour = '0' + hour};
+				if(sec !=0 && mint==0 && hour==0) {
+					showTime = "00:"+bmsec;
+				} else if(mint !=0 && hour==0){
+					showTime = bmmint +":"+bmsec;
+				}else if(hour !=0){
+					showTime = bmhour+":"+ bmmint +":"+bmsec;
+				}	
+				document.getElementById('Call_Duration').innerHTML = showTime;
+			}, 1000);
+		}	
+		
+		function myFunction(){
+			console.log("===========",document.getElementById('room-id').value);
+			//disableInputButtons();
+			/*connection.open(document.getElementById('room-id').value, function(isRoomOpened, roomid, error) {
+				if(isRoomOpened === true) {
+					showRoomURL(connection.sessionid);
+				}else {
+					disableInputButtons(true);
+					if(error === 'Room not available') {
+						alert('Someone already created this room. Please either join or create a separate room.');
+						return;
+					}
+					alert(error);
+				}
+			});*/
+		}
+
+		
+		document.getElementById('join-room').onclick = function() {
+			removedVideoPlay();
+			disableInputButtons();
+			connection.join(document.getElementById('room-id').value, function(isJoinedRoom, roomid, error) {
+				if (error) {
+					disableInputButtons(true);
+					if(error === 'Room not available') {
+						alert('This room does not exist. Please either create it or wait for moderator to enter in the room.');
+						return;
+					}
+					alert(error);
+				} else{
+					showRoomURL(roomId);
+					stFunc();
+				}
+			});
+		};
+
+		document.getElementById('open-or-join-room').onclick = function() {
+			removedVideoPlay();
+			disableInputButtons();
+			connection.openOrJoin(document.getElementById('room-id').value, function(isRoomExist, roomid, error) {
+				if(error) {
+					disableInputButtons(true);
+					alert(error);
+				}
+				else if (connection.isInitiator === true) {
+					// if room doesn't exist, it means that current user will create the room
+					showRoomURL(connection.sessionid);
+					stFunc();
+				}
+			});
+		};
+
+		// ......................................................
+		// ................FileSharing/TextChat Code.............
+		// ......................................................
+		document.getElementById('share-file').onclick = function() {
+			var fileSelector = new FileSelector();
+			fileSelector.selectSingleFile(function(file) {
+				connection.send(file);
+			});
+		};
+		
+		// ......................................................
+		// .....................TextChat Code....................
+		// ......................................................
+		document.getElementById('input-text-chat').onkeyup = function(e) {
+			if (e.keyCode != 13) return;
+
+			// removing trailing/leading whitespace
+			this.value = this.value.replace(/^\s+|\s+$/g, '');
+			if (!this.value.length) return;
+
+			connection.send(this.value);
+			var sendingTime = new Date().getTime();
+			appendDIV(userId,this.value,sendingTime,1);
+			this.value = '';
+		};
+
+		//var chatContainer = document.querySelector('.chat-output');
+		var chatContainer = document.querySelector('.chat-history');
+		function appendDIV(id,msg,msgTime,type) {
+			console.log('appendDIV', event);
+
+			/*if(event.data) {
+				connection.Translator.TranslateText(event.data, function(convertedText) {
+					console.log('convertedText', convertedText);
+					appendDIV(convertedText);
+				});
+				return;
+			}*/
+
+			var htmlcls = "opont"; 
+			if(type==1){
+				htmlcls = "you"; 
+			}
+			//var htmlmsg = '<li class='+htmlcls+'>'+id+'<p>'+msg+'</p></li>';
+			//chatContainer.innerHTML = htmlmsg;
+			/*var div = document.createElement('p');
+			div.innerHTML = msg.data || msg;
+			chatContainer.insertBefore(div, chatContainer.firstChild);
+			div.tabIndex = 0;
+			div.focus();*/
+
+			var d = new Date(msgTime);		
+			var time = d.toLocaleTimeString() // 1:35:07 PM
+			var day = d.toLocaleDateString()
+
+			var node = document.createElement("li");// Create a <li> node
+			node.className = htmlcls;
+			node.innerHTML= id  +" "+ time ;
+			var div = document.createElement("P");// Create a text node
+			div.innerHTML = msg;
+			node.appendChild(div);// Append the text to <li>
+			div.tabIndex = 0;
+			div.focus();
+			document.getElementById("myList").appendChild(node); 
+
+			document.getElementById('input-text-chat').focus();
+		}
+
+		var localVideo = document.getElementById('meet-videos-container');
+		var localStream = '';
+		navigator.mediaDevices.getUserMedia({"audio": true, "video": {width: 890,height: 370}}).catch(function(error) {
+			if (error.name !== "NotFoundError") {
+				throw error;
+			}
+			return navigator.mediaDevices.enumerateDevices().then(function(devices) {
+				var cam = devices.find(function(device) {
+					return device.kind === "videoinput";
+				});
+				var mic = devices.find(function(device) {
+					return device.kind === "audioinput";
+				});
+				var constraints = {video:cam && true, audio:mic && true};
+				return navigator.mediaDevices.getUserMedia(constraints);
+			});
+		}).then(function(stream) {
+			console.log("Got access to local media with mediaConstraints:\n");     
+			var video = document.createElement('video');
+			video.id = "local-video";
+			document.getElementById("video-img").style.display = "none";
+			try {
+				video.setAttributeNode(document.createAttribute('autoplay'));
+				video.setAttributeNode(document.createAttribute('playsinline'));
+			} catch (e) {
+				video.setAttribute('autoplay', true);
+				video.setAttribute('playsinline', true);
+			}
+			
+			localStream = stream;
+			video.srcObject = stream;        
+			localVideo.appendChild(video);
+		}).catch(function(error) {
+			//this.onError_("Error getting user media: " + error.message);
+			// this.onUserMediaError_(error);
+		});
+			
+		// ......................................................
+		// ..................RTCMultiConnection Code.............
+		// ......................................................
+		var connection = new RTCMultiConnection();
+	
+		// by default, socket.io server is assumed to be deployed on your own URL
+		connection.socketURL = 'https://focus.ind.in:8080/';
+
+		connection.socketMessageEvent = 'video-conference-demo';
+
+		connection.session = {
+			data:true,
+			audio: true,
+			video: true
+		};
+
+
+		/*		
+		connection.socketMessageEvent = 'screen-sharing-demo';
+
+		connection.session = {
+			screen: true,
+			oneway: true
+		};
+
+		connection.sdpConstraints.mandatory = {
+			OfferToReceiveAudio: false,
+			OfferToReceiveVideo: false
+		};
+		*/
+		connection.sdpConstraints.mandatory = {
+			OfferToReceiveAudio: true,
+			OfferToReceiveVideo: true
+		};
+
+		// STAR_FIX_VIDEO_AUTO_PAUSE_ISSUES
+		var bitrates = 512;
+		//var resolutions = 'Ultra-HD';
+		var resolutions = '';
+		var videoConstraints = {};
+
+		if (resolutions == 'HD') {
+			videoConstraints = {
+				width: {
+					ideal: 1280
+				},
+				height: {
+					ideal: 720
+				},
+				frameRate: 30
+			};
+		}
+
+		if (resolutions == 'Ultra-HD') {
+			videoConstraints = {
+				width: {
+					ideal: 1920
+				},
+				height: {
+					ideal: 1080
+				},
+				frameRate: 30
+			};
+		}
+
+		connection.mediaConstraints = {
+			video: videoConstraints,
+			audio: true
+		};
+
+		var CodecsHandler = connection.CodecsHandler;
+
+		connection.processSdp = function(sdp) {
+			var codecs = 'vp8';
+			
+			if (codecs.length) {
+				sdp = CodecsHandler.preferCodec(sdp, codecs.toLowerCase());
+			}
+
+			if (resolutions == 'HD') {
+				sdp = CodecsHandler.setApplicationSpecificBandwidth(sdp, {
+					audio: 128,
+					video: bitrates,
+					screen: bitrates
+				});
+
+				sdp = CodecsHandler.setVideoBitrates(sdp, {
+					min: bitrates * 8 * 1024,
+					max: bitrates * 8 * 1024,
+				});
+			}
+
+			if (resolutions == 'Ultra-HD') {
+				sdp = CodecsHandler.setApplicationSpecificBandwidth(sdp, {
+					audio: 128,
+					video: bitrates,
+					screen: bitrates
+				});
+
+				sdp = CodecsHandler.setVideoBitrates(sdp, {
+					min: bitrates * 8 * 1024,
+					max: bitrates * 8 * 1024,
+				});
+			}
+			return sdp;
+		};
+		// END_FIX_VIDEO_AUTO_PAUSE_ISSUES
+
+		// https://www.rtcmulticonnection.org/docs/iceServers/
+		// use your own TURN-server here!
+		connection.iceServers = [{
+			'urls': [
+				'stun:stun.l.google.com:19302',
+				'stun:stun1.l.google.com:19302',
+				'stun:stun2.l.google.com:19302',
+				'stun:stun.l.google.com:19302?transport=udp',
+			]
+		}];
+
+		connection.onmessage = function(event) {            
+            if (!!connection.enableLogs) {
+                console.debug('data-message', event.userid, event.data);
+			}
+			appendDIV(event.userid,event.data,event.sendingTime,2);
+        };
+		/*connection.onopen = function() {
+			document.getElementById('input-text-chat').disabled = false;
+		};*/
+		var btnflg = 0;
+		connection.videosContainer = document.getElementById('videos-container');
+		connection.onstream = function(event) {
+			console.log("videoHeight===========",event.mediaElement.videoHeight);
+			console.log("videoWidth===========",event.mediaElement.videoWidth);
+			//event.mediaElement.videoWidth = 400;
+			//event.mediaElement.videoHeight = 700;
+			var existing = document.getElementById(event.streamid);
+			if(existing && existing.parentNode) {
+				existing.parentNode.removeChild(existing);
+			}
+
+			event.mediaElement.removeAttribute('src');
+			event.mediaElement.removeAttribute('srcObject');
+			event.mediaElement.muted = true;
+			event.mediaElement.volume = 0;
+
+			var video = document.createElement('video');
+			video.id = "local-video";
+			try {
+				video.setAttributeNode(document.createAttribute('autoplay'));
+				video.setAttributeNode(document.createAttribute('playsinline'));
+			} catch (e) {
+				video.setAttribute('autoplay', true);
+				video.setAttribute('playsinline', true);
+			}
+
+			if(event.type === 'local') {
+				video.volume = 0;
+				try {
+					video.setAttributeNode(document.createAttribute('muted'));
+				} catch (e) {
+					video.setAttribute('muted', true);
+				}
+			}
+			video.srcObject = event.stream;
+			console.log("width==============",parseInt(connection.videosContainer.clientWidth));
+			//var width = parseInt(connection.videosContainer.clientWidth / 3) - 20;
+			var width = parseInt(connection.videosContainer.clientWidth);
+			var divcnt = 1;
+			if ($('div.media-container').length) {
+				divcnt = $('div.media-container').length + 1;
+				width = (width/divcnt);
+				$(".media-container").width(width);
+				$(".media-container").css('width',width);
+			}
+			
+			//buttons: ['mute-audio', 'mute-video','full-screen','volume-slider', 'stop'],
+			
+			var button = [];
+			if(btnflg==0){
+				btnflg =1;
+				button = ['mute-audio', 'mute-video'];
+			}
+			console.log("button==============",button);
+			var mediaElement = getHTMLMediaElement(video, {
+				title: event.userid,
+				buttons: button,
+				width: width,
+				showOnMouseEnter: false
+			});
+			console.log("mediaElement==============",mediaElement);
+			connection.videosContainer.appendChild(mediaElement);
+
+			setTimeout(function() {
+				mediaElement.media.play();
+			}, 5000);
+
+			mediaElement.id = event.streamid;
+
+			// to keep room-id in cache
+			localStorage.setItem(connection.socketMessageEvent, connection.sessionid);
+
+			/*chkRecordConference.parentNode.style.display = 'none';
+			if(chkRecordConference.checked === true) {
+			btnStopRecording.style.display = 'inline-block';
+			recordingStatus.style.display = 'inline-block';
+
+			var recorder = connection.recorder;
+			if(!recorder) {
+				recorder = RecordRTC([event.stream], {
+				type: 'video'
+				});
+				recorder.startRecording();
+				connection.recorder = recorder;
+			}
+			else {
+				recorder.getInternalRecorder().addStreams([event.stream]);
+			}
+
+			if(!connection.recorder.streams) {
+				connection.recorder.streams = [];
+			}
+
+			connection.recorder.streams.push(event.stream);
+			recordingStatus.innerHTML = 'Recording ' + connection.recorder.streams.length + ' streams';
+			}*/
+
+			if(event.type === 'local') {
+				connection.socket.on('disconnect', function() {
+					if(!connection.getAllParticipants().length) {
+					location.reload();
+					}
+				});
+			}
+		};
+
+		/*var recordingStatus = document.getElementById('recording-status');
+		var chkRecordConference = document.getElementById('record-entire-conference');
+
+		var btnStopRecording = document.getElementById('btn-stop-recording');
+		btnStopRecording.onclick = function() {
+		var recorder = connection.recorder;
+		if(!recorder) return alert('No recorder found.');
+		recorder.stopRecording(function() {
+			var blob = recorder.getBlob();
+			invokeSaveAsDialog(blob);
+
+			connection.recorder = null;
+			btnStopRecording.style.display = 'none';
+			recordingStatus.style.display = 'none';
+			chkRecordConference.parentNode.style.display = 'inline-block';
+		});
+		};*/
+
+		connection.onstreamended = function(event) {
+			var mediaElement = document.getElementById(event.streamid);
+			if (mediaElement) {
+				mediaElement.parentNode.removeChild(mediaElement);
+			}
+		};
+
+		connection.onMediaError = function(e) {
+			if (e.message === 'Concurrent mic process limit.') {
+				if (DetectRTC.audioInputDevices.length <= 1) {
+					alert('Please select external microphone. Check github issue number 483.');
+					return;
+				}
+
+				var secondaryMic = DetectRTC.audioInputDevices[1].deviceId;
+				connection.mediaConstraints.audio = {
+					deviceId: secondaryMic
+				};
+
+				connection.join(connection.sessionid);
+			}
+		};
+
+		// ..................................
+		// ALL below scripts are redundant!!!
+		// ..................................
+		function disableInputButtons(enable) {
+			document.getElementById('room-id').onkeyup();
+			document.getElementById('open-or-join-room').disabled = !enable;
+			document.getElementById('open-room').disabled = !enable;
+			//document.getElementById('join-room').disabled = !enable;
+			document.getElementById('room-id').disabled = !enable;
+		}
+
+		function removedVideoPlay(){
+			console.log("removedVideoPlay========");
+			//document.getElementsByClassName("media-container").remove();
+			//document.querySelector('.meet-media-container').remove();
+			document.getElementById("create-room-page").style.display = "none";
+			document.getElementById("video-play-page").style.display = "block"; 
+			document.getElementById("meet-videos-container").remove();
+			/*if (localStream) {
+				if (typeof localStream.getTracks === "undefined") {
+					localStream.stop();
+				} else {
+					localStream.getTracks().forEach(function(track) {
+						track.stop();
+					});
+				}
+				localStream = null;
+			}*/
+			localStream = null;
+		}
+
+		// ......................................................
+		// ......................Handling Room-ID................
+		// ......................................................
+
+		function showRoomURL(roomid) {
+			var roomHashURL = '#' + roomid;
+			var roomQueryStringURL = 'https://focus.ind.in:8080/meet?meetId=' + roomid;
+			var html = '<h3>your room:</h3><br>';
+			var html = '<a href="' + roomHashURL + '" target="_blank">' + roomHashURL + '</a>';
+			html += '<br>';
+			html += 'URL: <a href="' + roomQueryStringURL + '" target="_blank">' + roomQueryStringURL + '</a>';
+			var roomURLsDiv = document.getElementById('room-urls');
+			roomURLsDiv.innerHTML = html;
+			roomURLsDiv.style.display = 'block';
+		}
+
+		(function() {
+			var params = {},
+				r = /([^&=]+)=?([^&]*)/g;
+			function d(s) {
+				return decodeURIComponent(s.replace(/\+/g, ' '));
+			}
+			var match, search = window.location.search;
+			while (match = r.exec(search.substring(1)))
+				params[d(match[1])] = d(match[2]);
+			window.params = params;
+		})();
+
+		if(!roomId){
+			var roomid = '';
+			if (localStorage.getItem(connection.socketMessageEvent)) {
+				roomid = localStorage.getItem(connection.socketMessageEvent);
+			} else {
+				roomid = connection.token();
+			}
+		} else {
+			roomid = roomId;
+		}
+		
+
+		var txtRoomId = document.getElementById('room-id');
+		txtRoomId.value = roomid;
+		document.getElementById('r-id').innerHTML = roomid;
+		txtRoomId.onkeyup = txtRoomId.oninput = txtRoomId.onpaste = function() {
+			localStorage.setItem(connection.socketMessageEvent, document.getElementById('room-id').value);
+		};
+
+		var hashString = location.hash.replace('#', '');
+		if (hashString.length && hashString.indexOf('comment-') == 0) {
+			hashString = '';
+		}
+
+		var roomid = params.roomid;
+		if (!roomid && hashString.length) {
+			roomid = hashString;
+		}
+
+		if (roomid && roomid.length) {
+			document.getElementById('room-id').value = roomid;
+			document.getElementById('r-id').innerHTML = roomid;
+			localStorage.setItem(connection.socketMessageEvent, roomid);
+
+			// auto-join-room
+			(function reCheckRoomPresence() {
+				connection.checkPresence(roomid, function(isRoomExist) {
+					if (isRoomExist) {
+						connection.join(roomid);
+						return;
+					}
+
+					setTimeout(reCheckRoomPresence, 5000);
+				});
+			})();
+			disableInputButtons();
+		}
+
+		// detect 2G
+		if(navigator.connection &&
+		navigator.connection.type === 'cellular' &&
+		navigator.connection.downlinkMax <= 0.115) {
+			alert('2G is not supported. Please use a better internet service.');
+		}
+  	</script>
+    <script src="js/custom.js"></script>
+</body>
+</html>

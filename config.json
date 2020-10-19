@@ -1,0 +1,17 @@
+{
+  "socketURL": "/",
+  "dirPath": "",
+  "homePage": "/demos/index.html",
+  "socketMessageEvent": "RTCMultiConnection-Message",
+  "socketCustomEvent": "RTCMultiConnection-Custom-Message",
+  "port": "8080",
+  "enableLogs": "false",
+  "autoRebootServerOnFailure": "false",
+  "isUseHTTPs": "false",
+  "sslKey": "/home/node/ssl/2020-w1.matrimony.com.key",
+  "sslCert": "/home/node/ssl/2020-w1.matrimony.com.crt",
+  "sslCabundle": "",
+  "enableAdmin": "true",
+  "adminUserName": "username",
+  "adminPassword": "password"
+}

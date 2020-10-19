@@ -1,0 +1,3 @@
+
+
+pm2 start -i 2 app.js --log-date-format="YYYY-MM-DD HH:mm Z" --output="C:\Durai\pm2\logs\chat-log.log" --error="C:\Durai\pm2\logs\chat-err.log" --name Durai

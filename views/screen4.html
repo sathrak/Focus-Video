@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>meet app</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+        
+            <div class="d-flex" id="wrapper">
+                <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary text-center m-3" data-toggle="modal" data-target="#calendar-popup">
+                        Meeting Popup
+                    </button>
+                    
+                    <!-- Modal -->
+                    <div class="modal fade" id="calendar-popup" tabindex="-1" role="dialog" aria-labelledby="calendar-popupTitle"
+                     aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="calendar-popupTitle">Demo</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                            <div class="modal-body">
+                                    <nav>
+                                        <div class="nav nav-tabs" id="nav-tab3" role="tablist">
+                                        <a class="nav-item nav-link active" id="event-home-tab" data-toggle="tab" href="#event-home" role="tab" aria-controls="nav-home" aria-selected="true">Event</a>
+                                        <a class="nav-item nav-link" id="reminder-profile-tab" data-toggle="tab" href="#reminder-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Reminder</a>
+                                        <a class="nav-item nav-link" id="task-contact-tab" data-toggle="tab" href="#task-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Task</a>
+                                        </div>
+                                    </nav>
+                                    <div class="tab-content" id="nav-tabContent3">
+                                        <div class="tab-pane fade show active" id="event-home" role="tabpanel" aria-labelledby="event-home-tab">
+                                            <ul>
+                                                <li><i class="far fa-clock"></i> 
+                                                    <div class="demo-r">
+                                                        Jul 4, 2020 5:15 PM - 6: 15 PM Jul 4,2020    
+                                                    </div>
+                                                </li>
+                                                <li><i class="far fa-clock"></i> 
+                                                    <div class="demo-r">
+                                                        <button type="button">Add Guest</button> 
+                                                        <button type="button">See Guest Availability</button> 
+                                                        <p><img src="images/user.png" class="img-fluid" alt="icon" /> test@gmail.com</p>
+                                                        <p><img src="images/user.png" class="img-fluid" alt="icon" /> test@gmail.com</p>
+                                                    </div>
+                                                </li>
+                                                <li><i class="fas fa-video"></i>
+                                                    <div class="demo-r">
+                                                        <button type="button">Join our App</button> 
+                                                        <h5><i class="far fa-copy pr-5"></i></h5>
+                                                        <h5><i class="fas fa-times"></i></h5>
+                                                        <h6>meet.google.com/ved-some-text-here</h6>
+                                                    </div>
+                                                </li>
+                                                <li><i class="fas fa-map-marker-alt"></i>
+                                                    <div class="demo-r">
+                                                        Add Location
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="tab-pane fade" id="reminder-profile" role="tabpanel" aria-labelledby="reminder-profile-tab">
+                                            Some text here...
+                                        </div>
+                                        <div class="tab-pane fade" id="task-contact" role="tabpanel" aria-labelledby="task-contact-tab">
+                                            Some text here...
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+            </div>
+              <!-- /#wrapper -->
+
+    <script src="js/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/custom.js"></script>
+    
+
+</body>
+
+</html>
